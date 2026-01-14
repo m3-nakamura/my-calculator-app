@@ -12,7 +12,11 @@
     - [x] Create `index.html` <!-- id: 9 -->
     - [x] Create `style.css` <!-- id: 10 -->
     - [x] Create `script.js` <!-- id: 11 -->
-- [/] Verification <!-- id: 12 -->
-    - [/] Manual testing of calculation logic <!-- id: 13 -->
-    - [/] UI responsiveness check <!-- id: 14 -->
+- [x] Verification <!-- id: 12 -->
+    - [x] Manual testing of calculation logic <!-- id: 13 -->
+    - [x] UI responsiveness check <!-- id: 14 -->
     - [x] Create walkthrough.md <!-- id: 15 -->
+- [/] UI Refactor (Light Theme) <!-- id: 16 -->
+    - [/] Update style.css variables <!-- id: 17 -->
+    - [ ] Verify light theme <!-- id: 18 -->
+    - [ ] Push to GitHub <!-- id: 19 -->
