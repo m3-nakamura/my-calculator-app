@@ -1,0 +1,214 @@
+:root {
+    --bg-color: #0f172a;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --accent-color: #3b82f6;
+    --accent-glow: rgba(59, 130, 246, 0.5);
+    --operator-color: #f59e0b;
+    --function-color: #64748b;
+    --blob-1: #8b5cf6;
+    --blob-2: #ec4899;
+    --blob-3: #3b82f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: var(--text-primary);
+}
+
+/* Background Blobs */
+.background-blobs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: float 20s infinite alternate;
+}
+
+.blob-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--blob-1);
+    top: -50px;
+    left: -50px;
+}
+
+.blob-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--blob-2);
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -5s;
+}
+
+.blob-3 {
+    width: 350px;
+    height: 350px;
+    background: var(--blob-3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 30px) scale(1.1); }
+}
+
+/* Calculator Container */
+.calculator-container {
+    padding: 20px;
+    z-index: 10;
+}
+
+.calculator-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    width: 360px;
+    max-width: 100%;
+}
+
+/* Display Section */
+.display-section {
+    margin-bottom: 25px;
+    text-align: right;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.previous-operand {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    min-height: 1.5rem;
+    margin-bottom: 8px;
+    word-break: break-all;
+}
+
+.current-operand {
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 600;
+    word-break: break-all;
+    line-height: 1.1;
+}
+
+/* Keypad */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.btn {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 16px;
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+    border-top: 1px solid var(--glass-border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Button Variants */
+.btn.function {
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+.btn.operator {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: 400;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.btn.operator:hover {
+    background: rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.btn.equals {
+    grid-column: span 2;
+    aspect-ratio: auto; /* Since it spans 2 cols */
+    background: linear-gradient(135deg, var(--accent-color), #2563eb);
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+}
+
+.btn.equals:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Number 00 span */
+/* If you want 0 and 00 to fit nicely or span, adjust here if needed. 
+   Currently creating a standard grid. */
+
+/* Small adjustments for font sizes */
+@media (max-width: 380px) {
+    .calculator-glass {
+        padding: 20px;
+        width: 100%;
+    }
+    .btn {
+        font-size: 1.1rem;
+    }
+}
